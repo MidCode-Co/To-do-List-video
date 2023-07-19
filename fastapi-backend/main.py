@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Response, status , HTTPException
-from .database import conn, cursor
-from .schemas import toDo
+# from .database import conn, cursor
+from schemas import toDo
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse  
@@ -15,6 +15,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+dummyData = [{"id":"1","title":"cool"}]
 
 @app.get("/")
 def root():
