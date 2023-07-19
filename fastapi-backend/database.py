@@ -2,16 +2,13 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import time
 
-
-with open("password.txt", "r") as f:
-    passwo = f.read()
 while True:
     try:
         conn = psycopg2.connect(
             host="localhost",
-            database="postgres",  # fast api database # model_testing_database # postgres
+            database="postgres",
             user="postgres",
-            password=f"{passwo}",
+            password=f"password",
             cursor_factory=RealDictCursor,
         )
         cursor = conn.cursor()
