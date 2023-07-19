@@ -17,7 +17,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-dummyData = [{"id":"1","title":"cool", "category": "housework","isDone" : False, "datecreated" : "today"}]
+dummyData = [{"id":"1","title":"Dishes", "category": "Housework","isDone" : False, "dateCreated" : "Today"},{"id":"2","title":"Homework", "category": "Schoolwork","isDone" : True, "dateCreated" : "Today"},
+{"id":"3","title":"Meet friends", "category": "Leisure","isDone" : False, "dateCreated" : "Today"}]
 
 @app.get("/")
 def root():
