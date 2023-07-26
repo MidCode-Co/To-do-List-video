@@ -10,12 +10,12 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    # allow_origins=origins,
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 dummyData = [{"id":"1","title":"Dishes", "category": "Housework","isDone" : False, "dateCreated" : "Today"},{"id":"2","title":"Homework", "category": "Schoolwork","isDone" : True, "dateCreated" : "Today"},
 {"id":"3","title":"Meet friends", "category": "Leisure","isDone" : False, "dateCreated" : "Today"}]
@@ -74,8 +74,10 @@ async def updateToDo(id: int, payload: toDo):
     #         detail=f"todo with id : {id} cannot be delete because it does not exist",
     #     )
     # conn.commit()
+
     for dictionary in dummyData:
         if dictionary.get("id") == id:
+            print("matching dict")
             for key, value in payload.items():
                 if key in dictionary:
                     dictionary[key] = value

@@ -18,6 +18,12 @@ function App() {
       .then((res) => setTasks(res.data));
   }, []);
 
+  const updateTask = (task: Task) => {
+    axios
+      .put<Task[]>(`http://127.0.0.1:8000/toDos/${task.id}`, task)
+      .then(() => console.log("Updated Task"));
+  };
+
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
       <h1 className="text-5xl my-4  text-blue-500">To do list</h1>
@@ -42,12 +48,14 @@ function App() {
                 <td className="bg-blue-200  w-4 h-4">
                   {task.isDone ? (
                     <input
+                      onChange={() => updateTask(task)}
                       className="w-4 h-4 rounded-none"
                       type="checkbox"
                       defaultChecked
                     ></input>
                   ) : (
                     <input
+                      onChange={() => updateTask(task)}
                       className="w-4 h-4 rounded-none"
                       type="checkbox"
                     ></input>
